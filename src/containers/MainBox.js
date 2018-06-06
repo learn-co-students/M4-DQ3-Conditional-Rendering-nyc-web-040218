@@ -1,9 +1,52 @@
 import React from 'react'
 import MenuBar from '../components/MenuBar.js'
-import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
+import { Profile, Photos, Cocktails, Pokemon } from '../components/Pages.js'
 
 class MainBox extends React.Component {
+    constructor(){
+        super();
 
+        this.state= {
+            viewTab : "profile"
+        }
+    }
+
+    handleClick = (event) => {
+        if (event.target.id === "profile"){
+            this.setState({
+                viewTab: event.target.id
+            }, () => console.log(this.state))
+            console.log("profile", event);
+        } else if (event.target.id === "photo") {
+            this.setState({
+                viewTab: event.target.id
+            }, () => console.log(this.state))
+            console.log("photo", event);
+        } else if (event.target.id === "cocktail") {
+            console.log("cocktail", event);
+            this.setState({
+                viewTab: event.target.id
+            }, () => console.log(this.state))
+        } else if (event.target.id === "pokemon") {
+            console.log("Pokemon", event);
+            this.setState({
+                viewTab: event.target.id
+            }, () => console.log(this.state))
+        }
+    }
+
+
+    changeView = () => {
+        if (this.state.viewTab === "profile"){
+            return <Profile />
+        } else if (this.state.viewTab === "photo") {
+            return <Photos />
+        } else if (this.state.viewTab === "cocktail") {
+            return <Cocktails />
+        } else if (this.state.viewTab === "pokemon") {
+            return <Pokemon />
+        }
+    }
 
   render() {
 
@@ -13,11 +56,10 @@ class MainBox extends React.Component {
 
     */
 
-    const detailsToDisplay = <div>Hi, I'm a div!</div>
-
+    const detailsToDisplay = <div>{this.changeView()}</div>
     return (
       <div>
-        <MenuBar />
+        <MenuBar onClick={this.handleClick} />
         {detailsToDisplay}
       </div>
     )
