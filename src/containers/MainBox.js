@@ -3,7 +3,46 @@ import MenuBar from '../components/MenuBar.js'
 import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 
 class MainBox extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      visible: null
+    }
+  }
 
+  getVisible = (visibility) => {
+    this.setState({
+      visible: visibility
+    })
+  }
+
+  myFunc = () => {
+    if(this.state.visible === "profile") {
+      return <Profile />
+    } else if(this.state.visible === "photo") {
+      return <Photos />
+    } else if(this.state.visible === "cocktail") {
+      return <Cocktails />
+    } else if(this.state.visible === "pokemon") {
+      return <Pokemon />
+    }
+  }
+
+
+  // getVisible = (this.st.visible) => {
+  //   if(this.state.visible === "profile") {
+  //     return <Profile />
+  //   }
+  //   else if(this.state.visible === "photo") {
+  //     return <Photos />
+  //   }
+  //   if(this.state.visible === "cocktail") {
+  //     return <Cocktails />
+  //   }
+  //   if(this.state.visible === "pokemon") {
+  //     return <Pokemon />
+  //   }
+  // }
 
   render() {
 
@@ -17,8 +56,8 @@ class MainBox extends React.Component {
 
     return (
       <div>
-        <MenuBar />
-        {detailsToDisplay}
+        <MenuBar getVisible={this.getVisible}/>
+        {this.myFunc()}
       </div>
     )
   }
