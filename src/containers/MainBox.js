@@ -59,6 +59,27 @@ class MainBox extends React.Component {
       state = {
         viewPort: null
       }
+      // BRIE'S CODE
+      selectBtn = (e) => {
+  this.allBtns(e);
+  if (e.target.className[0] === "i"){
+    e.target.className = "item active";
+  }else{
+    e.target.parentNode.className = "item active";
+  }
+}
+    // BRIE'S CODE
+allBtns = (e) => {
+  if (e.target.className[0] === "i"){
+    e.target.parentNode.childNodes.forEach(a => {
+      a.className = "item";
+    })
+  }else{
+    e.target.parentNode.parentNode.childNodes.forEach(a => {
+      a.className = "item";
+    })
+  }
+}
 
   render() {
 
