@@ -1,6 +1,6 @@
 import React from "react";
 
-const MenuBar = props => {
+const MenuBar = (props) => {
   /*
 
   The 'a' tags below are the menu items. Think about the way a menu 

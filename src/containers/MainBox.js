@@ -26,7 +26,6 @@ class MainBox extends React.Component {
 
   componentToDisplay = () => {
     if (this.state.detailsToDisplay === "profile") {
-
       return <Profile />
     } else if (this.state.detailsToDisplay === "photo") {
       return <Photos />
